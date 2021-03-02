@@ -1,0 +1,74 @@
+<app-home></app-home>
+<br>
+
+<div class="container">
+    <h1 class="text-center">Posts Details</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-2">
+            <button mat-raised-button color="primary" [routerLink]="['/post',postId]">Back</button>
+
+        </div>
+        <div class="col-sm-8"></div>
+        <div class="col-sm-2">
+            <button mat-raised-button color="warn" (click)="deleteComment(postDetails.id)">Delete</button>
+
+        </div>
+
+
+    </div>
+    <br>
+    <table id="example" class="table table-hover ">
+        <caption></caption>
+
+        <br>
+        <tr>
+            <th scope="col">Title:</th>
+            <td>{{postDetails?.title |titlecase}}</td>
+        </tr>
+        <br>
+        <tr>
+            <th scope="col">Body:</th>
+            <td>{{postDetails?.body|titlecase}}</td>
+        </tr>
+
+
+
+
+    </table>
+
+
+
+
+
+</div>
+<div class="text-center">
+    <button mat-raised-button color="accent" (click)="getCommentDetails(postDetails.id)" title="click the comment">Comment</button>
+</div>
+
+
+<div *ngIf="comments">
+    <div class="container">
+        <h1 class="text-center">Comment List</h1>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Body</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of commentArray">
+                    <td>{{post.id}}</td>
+                    <td>{{post.name}}</td>
+                    <td>{{post.email}}</td>
+                    <td>{{post.body}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<app-home></app-home>
+
+<br>
+
+<div class="container">
+    <h1 class="text-center">Posts page</h1>
+    <hr>
+    <div class="text-right">
+        <button mat-raised-button color="primary" [routerLink]="['']">Back</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div *ngIf="loading">
+                <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+            </div>
+            <tr *ngFor="let post of postData">
+                <td>{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.body}}</td>
+                <td><button mat-raised-button color="primary" [routerLink]="['/postpageDetails',post.id]">View</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
